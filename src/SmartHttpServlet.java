@@ -243,7 +243,7 @@ public class SmartHttpServlet extends HttpServlet
 	/** 
 	 * Get an input stream connected to the output of this servlet.
 	 *
-	 * @return an {2link InputStream} connected to this servlet.
+	 * @return an {@link InputStream} connected to this servlet.
 	 **/
 	public InputStream getInputStream()
 		throws IOException

@@ -35,6 +35,9 @@
 				<path>package-info.java</path>
 			</fileitem>
 			<fileitem>
+				<path>Render.java</path>
+			</fileitem>
+			<fileitem>
 				<path>SmartHttpServlet.java</path>
 			</fileitem>
 			<fileitem>
