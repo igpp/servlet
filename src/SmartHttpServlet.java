@@ -527,7 +527,7 @@ public class SmartHttpServlet extends HttpServlet
 			
 		mOut.println("<h1>Overview</h1>");
 		
-		mOut.println("<div class=\"overview\"");
+		mOut.println("<div class=\"overview\">");
 		mOut.println(getServletInfo());
 		if(overview != null) {	// Supplement
 			mOut.println("<p>");
@@ -554,7 +554,7 @@ public class SmartHttpServlet extends HttpServlet
 			
 			mOut.println("</table>");
 		}
-		mOut.println("</div");
+		mOut.println("</div>");
 		
 		if(acknowledge != null) {
 			mOut.println("<div class=\"acknowledge\">");
