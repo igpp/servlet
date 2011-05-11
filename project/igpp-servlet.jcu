@@ -15,13 +15,13 @@
 			<path>..\src\Render.java</path>
 			<source>true</source>
 			<index>0</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
 			<path>..\src\SmartHttpServlet.java</path>
 			<source>true</source>
 			<index>1</index>
-			<active>false</active>
+			<active>true</active>
 		</docitem>
 		<docitem>
 			<path>..\src\Transform.java</path>
@@ -33,12 +33,6 @@
 			<path>..\..\..\..\..\java\docs\apidocs\javax\servlet\http\HttpServletRequest.html</path>
 			<source>false</source>
 			<index>3</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>..\..\..\..\..\Documents and Settings\tking\about:blank</path>
-			<source>false</source>
-			<index>4</index>
 			<active>false</active>
 		</docitem>
 	</open_files>
