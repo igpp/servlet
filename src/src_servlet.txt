@@ -1,5 +1,0 @@
-C:\Projects\igpp\java\servlet\src\MultiPrinter.java
-C:\Projects\igpp\java\servlet\src\package-info.java
-C:\Projects\igpp\java\servlet\src\Render.java
-C:\Projects\igpp\java\servlet\src\SmartHttpServlet.java
-C:\Projects\igpp\java\servlet\src\Transform.java
