@@ -1,0 +1,16 @@
+To use the igpp.servlet for Cross Scripting filtering add the following
+to the web.xml file of the site:
+
+   <!-- Filter URLs -->
+   <filter>
+      <filter-name>XSS</filter-name>
+      <display-name>XSS</display-name>
+      <description>Prevent XSS on a URL</description>
+      <filter-class>igpp.servlet.CrossScriptingFilter</filter-class>
+   </filter>
+   <filter-mapping>
+      <filter-name>XSS</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+The url-pattern applies to all requests (/*).
