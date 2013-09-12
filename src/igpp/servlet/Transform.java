@@ -1,5 +1,5 @@
 /**
- * A servlet to run apply an XML transform (XSL) on source retrieved from
+ * A servlet to apply an XML transform (XSL) on source retrieved from
  * a URL and send the results to HttpServletResponse. 
  * The XSL files are located in the directory given by XSLPath 
  * parameter in the servlet configuration.
@@ -15,13 +15,11 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 import java.net.URL;
-import java.net.URLConnection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletOutputStream;
 
 /**
  * Transforms any stream referenced by a URL using an
@@ -37,6 +35,7 @@ import javax.servlet.ServletOutputStream;
  */
 public class Transform extends HttpServlet 
 { 
+	private static final long serialVersionUID = 1L;
 	String mXSLPath = ".";
 	
    public void init()
@@ -76,7 +75,6 @@ public class Transform extends HttpServlet
 			try {
 		      URL url  = new URL(makeURL(request, fileURL));
 		      
-				URLConnection con = url.openConnection();
 	         InputStream inStream = url.openStream();
 	         
 	         System.out.println("fileURL: " + fileURL);

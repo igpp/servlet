@@ -17,7 +17,6 @@ import java.util.Random;
 import java.util.ArrayList;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Field;
 
 import javax.servlet.http.HttpServlet;
 
@@ -39,12 +38,15 @@ import org.apache.commons.cli.Option;
  * generating XML.
  *
  * @author Todd King
- * @version 1.00 2006
+ * @version 1.00
  */
 public class SmartHttpServlet extends HttpServlet
 {
+	private static final long serialVersionUID = 1L;
 	static private String mVersion = "1.0.0";
 	private String mInstanceVersion = mVersion;
+	
+	static private boolean mVerbose = false;
 	
 	public MultiPrinter	mOut	= new MultiPrinter();
 	
@@ -130,7 +132,6 @@ public class SmartHttpServlet extends HttpServlet
 	**/
 	public boolean setMember(String name, String value)
 	{
-		String      member;
 		String      methodName = "";
 		Object[] passParam = new Object[1];
 		Method   method;
@@ -138,6 +139,7 @@ public class SmartHttpServlet extends HttpServlet
 		
 		try {
 			// Signature and parameters for "set" methods
+			@SuppressWarnings("rawtypes")
 			Class[]  argSig = new Class[1];
 			argSig[0] = Class.forName("java.lang.String");
 			
@@ -166,7 +168,7 @@ public class SmartHttpServlet extends HttpServlet
 		if(obj == null) return;
 		if(request == null) return;
 		System.out.println("setMembers()");
-		for (Enumeration e = request.getParameterNames() ; e.hasMoreElements() ;) {
+		for (Enumeration<?> e = request.getParameterNames() ; e.hasMoreElements() ;) {
 			String name = (String) e.nextElement();
 			String[] values = request.getParameterValues(name);
 			System.out.println(name + ": (" + values.length + ")");
@@ -272,7 +274,6 @@ public class SmartHttpServlet extends HttpServlet
    	throws Exception
    {
    	String	delim = "";
-   	String	temp;
    	
 		URL url = new URL(urlQuery);
 		URLConnection connection = url.openConnection();
@@ -304,8 +305,7 @@ public class SmartHttpServlet extends HttpServlet
    static public InputStream getInputStream(String urlQuery, String[] parameters)
    	throws Exception
    {
-   	String	delim = "";
-   	String	temp;
+   	    String	delim = "";
    	
 		URL url = new URL(urlQuery);
 		URLConnection connection = url.openConnection();
@@ -333,9 +333,6 @@ public class SmartHttpServlet extends HttpServlet
    static public InputStream getInputStream(HttpServletRequest request)
    	throws Exception
    {
-   	String	delim = "";
-   	String	temp;
-   	
 		URL url = new URL(request.getRequestURL().toString());
 		URLConnection connection = url.openConnection();
 		connection.setDoOutput(true);
@@ -361,8 +358,7 @@ public class SmartHttpServlet extends HttpServlet
    static public void sendDatagram(String urlQuery, String[] parameters)
    	throws Exception
    {
-   	String	delim = "";
-   	String	temp;
+     	String	delim = "";
    	
 		URL url = new URL(urlQuery);
 		URLConnection connection = url.openConnection();
@@ -379,7 +375,7 @@ public class SmartHttpServlet extends HttpServlet
 		String	buffer;
 		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		while((buffer = reader.readLine()) != null) {
-			// System.out.println(buffer);
+			if(mVerbose) { System.out.println(buffer); }
 		}
    }
 
@@ -421,10 +417,10 @@ public class SmartHttpServlet extends HttpServlet
 		String context = request.getContextPath();
 		
 		String port = "";
-		port = port.format(":%d", request.getServerPort());
+		port = String.format(":%d", request.getServerPort());
 		
 		try {
-			URL temp = new URL(path);
+			new URL(path);	// Attempt to parse path
 			return path;
 		} catch(Exception e) {	// Not a fully qualified URL
 		}

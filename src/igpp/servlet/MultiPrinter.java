@@ -3,7 +3,6 @@ package igpp.servlet;
 //import java.io.*;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.io.IOException;
 
 import javax.xml.transform.stream.StreamResult;
 
@@ -31,6 +30,7 @@ public class MultiPrinter extends JspWriter
 	{
 		MultiPrinter me = new MultiPrinter();
 		System.out.println( me.getClass().getName() );
+		me.close();
 	}
 
 	/**

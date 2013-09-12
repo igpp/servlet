@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class Info extends HttpServlet {
-	   /**
+
+	private static final long serialVersionUID = 1L;
+
+	/**
 	    * Process a HTTP post request.
 	    *
 	    * Called as part of the servlet framework when a HTTP post event occurs.

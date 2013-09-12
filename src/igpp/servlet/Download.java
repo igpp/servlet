@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class Download extends HttpServlet {
-
+	private static final long serialVersionUID = 1L;
 	static private String mVersion = "1.0.0";
 	private String mMime = "application/octet-stream";
 	
@@ -26,7 +26,6 @@ public class Download extends HttpServlet {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("Version: " + mVersion);
 	}
 

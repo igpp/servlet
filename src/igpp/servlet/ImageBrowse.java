@@ -5,8 +5,6 @@ import java.io.FileFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.util.Arrays;
-import igpp.util.Text;
 import igpp.util.FileComparator;
 
 import javax.servlet.ServletException;
@@ -19,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class ImageBrowse extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
+	static private String mVersion = "1.0.0";
+	
 	String mJQueryFile = "jquery.js";
 	String mMainJSFile = "main.js";
 	String mMainCSSFile = "main.css";
@@ -30,8 +31,7 @@ public class ImageBrowse extends HttpServlet {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Version: " + mVersion);
 	}
 
     public void init() 
@@ -81,6 +81,7 @@ public class ImageBrowse extends HttpServlet {
 		}
 	}
 	                
+	@SuppressWarnings("unchecked")
 	public void doAction(HttpServletRequest request, HttpServletResponse response)
 		throws Exception
 	{
@@ -150,7 +151,6 @@ public class ImageBrowse extends HttpServlet {
 		   for(File item : list) {
 		      String fullRes = item.getAbsolutePath();
 		      if(fullRes.endsWith(".JPG")) {	// Convert to lower case
-	           File orig = new File(fullRes);
 	           fullRes = fullRes.replace(".JPG", ".jpg");
 	           item.renameTo(new File(fullRes));
 	        }
